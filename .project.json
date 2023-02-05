@@ -1,0 +1,65 @@
+{
+  "projectType": [
+    "sap.watt.uitools.ide.fiori"
+  ],
+  "build": {
+    "targetFolder": "dist",
+    "sourceFolder": "webapp",
+    "excludedFolders": [
+      "test"
+    ],
+    "excludedFiles": [
+      "test.html"
+    ]
+  },
+  "dataBinding": {
+    "/webapp/view/App.view.xml": {
+      "entitySet": "UNBINDKEY"
+    },
+    "/webapp/view/NotFound.view.xml": {
+      "entitySet": "UNBINDKEY"
+    },
+    "/webapp/view/ObjectNotFound.view.xml": {
+      "entitySet": "UNBINDKEY"
+    },
+    "/webapp/view/Worklist.view.xml": {
+      "entitySet": "SL_HDRSet"
+    },
+    "/webapp/view/Object.view.xml": {
+      "entitySet": "SL_HDRSet"
+    }
+  },
+  "generation": [
+    {
+      "templateId": "sap.ui.ui5-template-plugin.1worklist",
+      "templateVersion": "1.36.2",
+      "dateTimeStamp": "Sun, 05 Feb 2023 04:35:04 GMT"
+    }
+  ],
+  "codeCheckingTriggers": {
+    "notifyBeforePush": true,
+    "notifyBeforePushLevel": "Error",
+    "blockPush": false,
+    "blockPushLevel": "Error"
+  },
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "en,fr,de",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "i18n.properties",
+    "resourceModelName": "i18n"
+  },
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/ZFR_SALES_SRV",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "basevalidator": {
+    "services": {
+      "xml": "fioriXmlAnalysis",
+      "js": "fioriJsValidator"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFR_SALES_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="SL_HDR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Sales Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Total" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Amount in LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NP_ON_VBELN" Relationship="ZFR_SALES_SRV.Ass_Hdr_Itm" FromRole="FromRole_Ass_Hdr_Itm" ToRole="ToRole_Ass_Hdr_Itm"/>
+            </EntityType>
+            <EntityType Name="SL_ITM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Vbeln"/>
+                    <PropertyRef Name="Posnr"/>
+                </Key>
+                <Property Name="Vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Sales Document" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Posnr" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Item" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material num" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Basmg" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Base quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dmbtr" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Amount in LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SL_CUST" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Kunnr"/>
+                </Key>
+                <Property Name="Kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Customer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name2" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Name 2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ort01" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="City" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pstlz" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Postal Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Regio" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Region" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stras" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Street" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Telf1" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Telephone 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SL_MTNR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material num" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="100" sap:label="Material Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SL_MTREV" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Seq"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Seq" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Fld. Seq. No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material num" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rating" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Rating" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Oneliner" Type="Edm.String" Nullable="false" MaxLength="250" sap:label="Summary" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Review" Type="Edm.String" Nullable="false" MaxLength="1333" sap:label="Review" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SL_MTDTL" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Seq"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Seq" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Fld. Seq. No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material num" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="File Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filetype" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="File Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filecontent" Type="Edm.Binary" Nullable="false" sap:label="File" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="SL_MTDLR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material num" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dmbtr" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Amount in LC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="Ass_Hdr_Itm" sap:content-version="1">
+                <End Type="ZFR_SALES_SRV.SL_HDR" Multiplicity="*" Role="FromRole_Ass_Hdr_Itm"/>
+                <End Type="ZFR_SALES_SRV.SL_ITM" Multiplicity="*" Role="ToRole_Ass_Hdr_Itm"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Ass_Hdr_Itm">
+                        <PropertyRef Name="Vbeln"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Ass_Hdr_Itm">
+                        <PropertyRef Name="Vbeln"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZFR_SALES_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SL_ITMSet" EntityType="ZFR_SALES_SRV.SL_ITM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SL_CUSTSet" EntityType="ZFR_SALES_SRV.SL_CUST" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SL_MTNRSet" EntityType="ZFR_SALES_SRV.SL_MTNR" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SL_MTREVSet" EntityType="ZFR_SALES_SRV.SL_MTREV" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SL_MTDTLSet" EntityType="ZFR_SALES_SRV.SL_MTDTL" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SL_MTDLRSet" EntityType="ZFR_SALES_SRV.SL_MTDLR" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SL_HDRSet" EntityType="ZFR_SALES_SRV.SL_HDR" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="Ass_Hdr_ItmSet" Association="ZFR_SALES_SRV.Ass_Hdr_Itm" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SL_HDRSet" Role="FromRole_Ass_Hdr_Itm"/>
+                    <End EntitySet="SL_ITMSet" Role="ToRole_Ass_Hdr_Itm"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZFR_SALES_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZFR_SALES_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
